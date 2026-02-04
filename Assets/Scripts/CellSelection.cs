@@ -27,5 +27,8 @@ public class CellSelection : MonoBehaviour
                     hit.collider.GetComponent<Renderer>().material = materialWrong;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+            GameManager.instance.SetMinigameDone();
     }
 }
