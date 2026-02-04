@@ -9,13 +9,13 @@ public class Gun : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private float maxDist = 3f;
     [SerializeField] private LayerMask layerMask;
-    public Wafer wafer;
+    [SerializeField] private LineRenderer lineRenderer;
     Ray ray;
     RaycastHit hit;
 
     private void Start()
     {
-        ray = new Ray(firePoint.transform.position, firePoint.forward);
+        ray = new Ray(firePoint.transform.position, transform.forward);
     }
 
     private void Update()
@@ -23,12 +23,16 @@ public class Gun : MonoBehaviour
 
         if (xrgrab.isSelected)
         {
-            Gizmos.DrawLine(ray.origin, ray.direction);
+            lineRenderer.enabled = true;
 
             if (triggerAction.action.IsInProgress())
             {
                 Shoot();
             }
+        }
+        else
+        {
+            lineRenderer.enabled = false;
         }
     }
 
@@ -38,7 +42,7 @@ public class Gun : MonoBehaviour
         {
             if (hit.transform.gameObject.CompareTag("Wafer"))
             {
-                wafer.HitRedDot();
+                hit.transform.gameObject.GetComponent<Wafer>().HitRedDot();
                 Debug.Log("Hit wafer");
             }
         }

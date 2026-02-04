@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Wafer : MonoBehaviour
 {
-    private MeshRenderer m_Renderer;
+    private List<MeshRenderer> renderers;
     [SerializeField] private Material mat2;
     [SerializeField] private Material mat3;
     private Rigidbody rb;
@@ -12,18 +13,23 @@ public class Wafer : MonoBehaviour
 
     private void Start()
     {
-        m_Renderer = GetComponent<MeshRenderer>();
+        foreach (Transform child in gameObject.transform)
+        {
+            MeshRenderer rend = child.gameObject.GetComponent<MeshRenderer>();
+            renderers.Add(rend);
+        }
+
         rb = GetComponent<Rigidbody>();
     }
 
     public void SprayWafer()
     {
-        m_Renderer.material = mat2;
+        
     }
 
     public void ClearWafer()
     {
-        m_Renderer.material = mat3;
+        
     }
 
     private void OnCollisionEnter(Collision collision)

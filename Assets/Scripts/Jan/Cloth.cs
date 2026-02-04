@@ -5,7 +5,6 @@ public class Cloth : MonoBehaviour
 {
     [SerializeField] private XRGrabInteractable xrgrab;
     private bool isPickedUp = false;
-    public Wafer wafer;
 
     private void Update()
     {
@@ -25,7 +24,7 @@ public class Cloth : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Wafer"))
             {
-                wafer.ClearWafer();
+                collision.gameObject.GetComponent<Wafer>().ClearWafer();
                 Debug.Log("Wiping the wafer");
             }
         }
@@ -37,7 +36,7 @@ public class Cloth : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Wafer"))
             {
-                wafer.ClearWafer();
+                other.gameObject.GetComponent<Wafer>().ClearWafer();
                 Debug.Log("Wiping the wafer");
             }
         }
