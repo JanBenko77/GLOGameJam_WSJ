@@ -9,17 +9,12 @@ public class LinePatternDrawing : MonoBehaviour
     void Start()
     {
         lineRenderer = gameObject.GetComponent<LineRenderer>();
-        lineRenderer.positionCount = 5;
-        lineRenderer.SetPosition(0, grid.GetGridCell(0, 0).transform.position);
-        lineRenderer.SetPosition(1, grid.GetGridCell(0, 2).transform.position);
-        lineRenderer.SetPosition(2, grid.GetGridCell(2, 2).transform.position);
-        lineRenderer.SetPosition(3, grid.GetGridCell(2, 1).transform.position);
-        lineRenderer.SetPosition(4, grid.GetGridCell(1, 1).transform.position);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Vector2Int[] positions = grid.GetDrawPattern().gridPositions;
+        lineRenderer.positionCount = positions.Length;
+        for (int i = 0; i < lineRenderer.positionCount; i++)
+        {
+            GridCell gridCell = grid.GetGridCell(positions[i].x, positions[i].y);
+            lineRenderer.SetPosition(i, gridCell.transform.position);
+        }
     }
 }

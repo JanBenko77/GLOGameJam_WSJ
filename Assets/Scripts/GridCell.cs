@@ -2,21 +2,16 @@ using UnityEngine;
 
 public class GridCell : MonoBehaviour
 {
-    private Vector2 gridPosition;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private Vector2Int gridPosition;
 
     public void SetPosition(int targetX, int targetY)
     {
-        gridPosition = new Vector2(targetX, targetY);
+        gridPosition = new Vector2Int(targetX, targetY);
+        print(gridPosition);
+    }
+
+    public Vector2Int GetPosition()
+    {
+        return gridPosition;
     }
 }
