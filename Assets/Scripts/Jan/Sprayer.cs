@@ -9,6 +9,8 @@ public class Sprayer : MonoBehaviour
     [SerializeField] private XRGrabInteractable xrgrab;
     [SerializeField] private InputActionReference triggerAction;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private float maxDist = 3f;
+    [SerializeField] private LayerMask layerMask;
 
     private void Update()
     {
@@ -24,9 +26,15 @@ public class Sprayer : MonoBehaviour
 
     private void Spray()
     {
-        //spray water or something
-        //raycast spray to surface of wafer
-        //paint surface of wafer
+        Ray ray = new Ray(firePoint.transform.position, firePoint.forward);
+        RaycastHit hit;
 
+        if (Physics.Raycast(ray, out hit, maxDist, layerMask))
+        {
+            if (hit.transform.gameObject.CompareTag("Wafer"))
+            {
+                Debug.Log("Hit wafer");
+            }
+        } 
     }
 }

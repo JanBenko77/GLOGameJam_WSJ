@@ -12,13 +12,31 @@ public class Cloth : MonoBehaviour
         {
             isPickedUp = true;
         }
+        else
+        {
+            isPickedUp = false;
+        }
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if (isPickedUp)
         {
-            //can wipe or whatever
+            if (collision.gameObject.CompareTag("Wafer"))
+            {
+                Debug.Log("Wiping the wafer");
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (isPickedUp)
+        {
+            if (other.gameObject.CompareTag("Wafer"))
+            {
+                Debug.Log("Wiping the wafer");
+            }
         }
     }
 }
