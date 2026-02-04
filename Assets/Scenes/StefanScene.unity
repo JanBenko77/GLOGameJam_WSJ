@@ -1024,6 +1024,8 @@ MonoBehaviour:
   spawnPosition: {fileID: 768221491}
   drawPatterns:
   - {fileID: 11400000, guid: 10063c86a2aa34d6bbe4693057b1c970, type: 2}
+  - {fileID: 11400000, guid: d122d86bd87ffbcddabd1278533497b0, type: 2}
+  - {fileID: 11400000, guid: 6494570a3cf8e1cd59691176bf2fa89a, type: 2}
 --- !u!4 &1390891725
 Transform:
   m_ObjectHideFlags: 0

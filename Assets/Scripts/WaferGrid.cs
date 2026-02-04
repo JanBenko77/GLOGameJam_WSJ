@@ -33,6 +33,7 @@ public class WaferGrid : MonoBehaviour
 
     public DrawPatternSODefinition GetDrawPattern()
     {
-        return drawPatterns[0];
+        return drawPatterns[Random.Range(0, drawPatterns.Length)];
+        //return drawPatterns[0];
     }
 }

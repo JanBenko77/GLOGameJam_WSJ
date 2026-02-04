@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 867cf4c54cb02aad89730f5276377b7d, type: 3}
-  m_Name: DrawPatternScriptableObject
+  m_Name: DrawPattern2
   m_EditorClassIdentifier: Assembly-CSharp::DrawPatternSODefinition
   gridPositions:
-  - {x: 0, y: 0}
-  - {x: 1, y: 0}
   - {x: 2, y: 0}
   - {x: 2, y: 1}
-  - {x: 1, y: 1}
+  - {x: 2, y: 2}
+  - {x: 1, y: 2}
   - {x: 1, y: 2}
