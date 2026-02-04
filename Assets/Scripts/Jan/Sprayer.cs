@@ -11,6 +11,7 @@ public class Sprayer : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private float maxDist = 3f;
     [SerializeField] private LayerMask layerMask;
+    public Wafer wafer;
 
     private void Update()
     {
@@ -29,10 +30,11 @@ public class Sprayer : MonoBehaviour
         Ray ray = new Ray(firePoint.transform.position, firePoint.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, maxDist, layerMask))
+        if (Physics.Raycast(ray, out hit, maxDist))
         {
             if (hit.transform.gameObject.CompareTag("Wafer"))
             {
+                wafer.SprayWafer();
                 Debug.Log("Hit wafer");
             }
         } 
