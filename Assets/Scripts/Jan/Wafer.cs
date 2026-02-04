@@ -13,6 +13,8 @@ public class Wafer : MonoBehaviour
 
     private void Start()
     {
+        renderers = new();
+
         foreach (Transform child in gameObject.transform)
         {
             MeshRenderer rend = child.gameObject.GetComponent<MeshRenderer>();
@@ -24,12 +26,22 @@ public class Wafer : MonoBehaviour
 
     public void SprayWafer()
     {
-        
+        foreach (MeshRenderer rend in renderers)
+        {
+            List<Material> newList = new List<Material>();
+            newList.Add(mat2);
+            rend.SetMaterials(newList);
+        }
     }
 
     public void ClearWafer()
     {
-        
+        foreach (MeshRenderer rend in renderers)
+        {
+            List<Material> newList = new List<Material>();
+            newList.Add(mat3);
+            rend.SetMaterials(newList);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
