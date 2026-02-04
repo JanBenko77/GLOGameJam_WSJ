@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "GLOGameJam_WSJ.slnx"
+    "dotnet.defaultSolution": "GamelabIntro.slnx"
 }
