@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField]
-    private int totalStages = 2;
+    private int totalStages;
     private int currentStage;
     private static bool allDone;
 
