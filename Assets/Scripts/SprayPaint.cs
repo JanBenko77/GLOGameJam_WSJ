@@ -31,7 +31,6 @@ public class SprayPaint : MonoBehaviour
             if (Physics.Raycast(rayOrigin, out hit, Mathf.Infinity, layerMask) && Time.frameCount % 5 == 0 && Vector3.Distance(hit.point, previousHit) > 0.3f)
             //if (Physics.Raycast(rayOriginTransform.position, rayOriginTransform.forward, out hit, Mathf.Infinity, layerMask))
             {
-                //Instantiate(sprayPrefab, hit.point, Quaternion.identity);
                 previousHit = hit.point;
                 lineRenderer.positionCount++;
                 lineRenderer.SetPosition(counter, hit.point);
@@ -40,7 +39,16 @@ public class SprayPaint : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
-            print(Compare(lineRenderer, previewLine));
+            ChangeToSelection();
+    }
+
+    private void ChangeToSelection()
+    {
+        GetComponent<CellSelection>().enabled = true;
+        GetComponent<LineRenderer>().enabled = false;
+        previewLine.enabled = false;
+        enabled = false;
+        GameManager.instance.SetMinigameDone();
     }
 
     public float Compare(LineRenderer a, LineRenderer b, int sampleCount = 100)
@@ -122,7 +130,6 @@ public class SprayPaint : MonoBehaviour
 
     private void Normalize(List<Vector3> points)
     {
-        // Center
         Vector3 center = Vector3.zero;
         foreach (var p in points) center += p;
         center /= points.Count;
@@ -130,7 +137,6 @@ public class SprayPaint : MonoBehaviour
         for (int i = 0; i < points.Count; i++)
             points[i] -= center;
 
-        // Scale
         float maxDist = 0f;
         foreach (var p in points)
             maxDist = Mathf.Max(maxDist, p.magnitude);
