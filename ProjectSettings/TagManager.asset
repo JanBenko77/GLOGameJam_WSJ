@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - Wafer
   layers:
   - Default
   - TransparentFX
@@ -12,7 +13,11 @@ TagManager:
   - SprayArea
   - Water
   - UI
+<<<<<<< HEAD
   - GridCell
+=======
+  - Raycastable
+>>>>>>> origin/main
   - 
   - 
   - 
