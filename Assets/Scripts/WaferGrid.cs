@@ -5,20 +5,22 @@ public class WaferGrid : MonoBehaviour
     [SerializeField]
     private GameObject gridCellPrefab;
     private GridCell[,] gridCells;
-    private int spacing = 2, gridSize = 3;
+    private int gridSize = 3;
+    private float spacing = 2f;
     [SerializeField]
     private Transform spawnPosition;
     [SerializeField]
     private DrawPatternSODefinition[] drawPatterns;
     private DrawPatternSODefinition currentDrawPattern;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        spacing *= transform.localScale.x;
         CreateGrid(gridSize, spacing);
     }
 
-    private void CreateGrid(int gridSize, int spacing)
+    private void CreateGrid(int gridSize, float spacing)
     {
         currentDrawPattern = drawPatterns[Random.Range(0, drawPatterns.Length)];
         gridCells = new GridCell[gridSize,gridSize];
